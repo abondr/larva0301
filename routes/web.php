@@ -19,3 +19,4 @@ Route::get('/contact-us',['uses'=>"PageController@getContactUsPage",'as'=>"page.
 
 Route::post('/contact-us',['uses'=>"PageController@postContactUsPage",'as'=>"page.contact.post"]);
 
+Route::resource('post', 'PostController');

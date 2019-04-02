@@ -12,6 +12,9 @@
                 <li class="nav-item {!! $active_page == "contact_page" ? "active":""  !!}">
                     <a class="nav-link" href="{{URL::to("/contact-us")}}">Contact Us</a>
                 </li>
+                <li class="nav-item {!! $active_page == "post_page" ? "active":""  !!}">
+                    <a class="nav-link" href="{{URL::to("/post")}}">Contact Us</a>
+                </li>
             </ul>
         </div>
     </nav>

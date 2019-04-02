@@ -13,7 +13,7 @@
                         {{Form::label('fname', 'First Name', array('class' => ''))}}
                         {{Form::text('fname', $contact->fname,
                             array("class"=>"form-control","id"=>"fame"))}}
-                        <div class="text-primary">
+                        <div class="bg-warning text-danger">
                             {{ $errors->first('fname') }}
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         {{Form::label('lname', 'Last Name', array('class' => ''))}}
                         {{Form::text('lname', $contact->lname,
                             array("class"=>"form-control","id"=>"lame"))}}
-                        <div class="text-primary">
+                        <div class="bg-warning text-danger">
                             {!! $errors->first('lname') !!}
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                     {{Form::label('email', 'Email', array('class' => ''))}}
                     {{Form::text('email', $contact->email,
                             array("class"=>"form-control","id"=>"email"))}}
-                    <div class="text-primary">
+                    <div class="bg-warning text-danger">
                         {!! $errors->first('email') !!}
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                 {{Form::label('contact_number', 'Contact Number', array('class' => ''))}}
                 {{Form::text('contact_number', $contact->contact_number,
                         array("class"=>"form-control","id"=>"contact_number"))}}
-                <div class="text-primary">
+                <div class="bg-warning text-danger">
                     {!! $errors->first('contact_number') !!}
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 {{Form::label('message', 'Message', array('class' => ''))}}
                 {{Form::textarea('message', $contact->message,
                         array("class"=>"form-control","id"=>"message"))}}
-                <div class="text-danger">
+                <div class="bg-warning text-danger">
                     {!! $errors->first('message') !!}
                 </div>
             </div>
