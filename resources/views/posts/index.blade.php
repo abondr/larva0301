@@ -17,7 +17,7 @@
                 <tr>
                     <td>{{ $post->title }}</td>
                     <td>{{ substr($post->body,0,100) }}</td>
-                    <td><a href='{{ URL::to("/post/".$post->post_id) }}' class='btn btn-warning'>Details</a></td>
+                    <td><a href='{{ URL::to("/post/".$post->slug) }}' class='btn btn-warning'>Details</a></td>
                 </tr>
             @endforeach
             <tr><td colspan=5>{{ $posts->links() }}</td></tr>
