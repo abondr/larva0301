@@ -3,7 +3,7 @@
                 <div class="col-md-10">
                     {{Form::label('title', 'Title', array('class' => ''))}}
                     {{Form::text('title', $post->title, array("class"=>"form-control","id"=>"title"))}}
-                    <div class="invalid-feedback">
+                    <div class="bg-warning text-danger">
                         {{ $errors->first('title') }}
                     </div>
                 </div>
@@ -13,7 +13,7 @@
                     {{Form::label('body', 'Description', array('class' => ''))}}
                     {{Form::textarea('body', $post->body,
                         array("class"=>"form-control","id"=>"body"))}}
-                    <div class="invalid-feedback">
+                    <div class="bg-warning text-danger">
                         {{ $errors->first('body') }}
                     </div>
                 </div>

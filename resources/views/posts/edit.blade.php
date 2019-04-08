@@ -2,7 +2,7 @@
       $active_page = "post_page";
       $method = "PUT";
       $formTitle = "Edit Post";
-      $routeArr = array("post.update",$post->slug);
+      $routeArr = array("post.update",$post->post_id);
 ?>
 @extends("layouts.layout01",compact("active_page"))
 @section("page_title","Edit Post")

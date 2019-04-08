@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Session;
 
 class PostController extends Controller
 {
@@ -12,10 +13,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $validation = array(
-        'title' => 'required||max:255|uniqu',
-        'body' => 'required'
-    );
+    protected function rules() {
+        return array(
+            'title' => "required||max:255|unique:posts",
+            'slug'=> 'unique:posts',
+            'body' => "required"
+        );
+    }
 
     public function index()
     {
@@ -42,7 +46,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valid1 = $this->rules();
+        $request->validate($valid1);
+        $post = new Post();
+        $post->title = $request->title;
+        $post->slug = str_slug($post->title);
+        $post->body = $request->body;
+        $post->created_at = date("Y-m-d H:i:s");
+        $post->updated_at = date("Y-m-d H:i:s");
+        $post->save();
+        Session::flash('message', 'Post Added successfully');
+        return redirect()->route('post.index');
     }
 
     /**
@@ -73,12 +87,22 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
-        $post = Post::where("slug",$slug)->first();
+        $post = Post::where("post_id",$id)->first();
+        $valid1 = $this->rules();
+        $valid1['title'] .= ",title,{$post->post_id},post_id";
+        $request->validate($valid1);
+        $post->title = $request->title;
+        $post->slug = str_slug($post->title);
+        $post->body = $request->body;
+        $post->created_at = date("Y-m-d H:i:s");
+        $post->updated_at = date("Y-m-d H:i:s");
+        $post->save();
+        return redirect()->route('post.index');
 
     }
 
