@@ -22,10 +22,12 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <a href="#" class="btn btn-primary btn-block">Edit</a>
+                            <a href="{{ route('post.edit',$post->slug) }}" class="btn btn-primary btn-block">Edit</a>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#" class="btn btn-danger btn-block">Delete</a>
+                            {{ Form::open(array("route" => array("post.destroy",$post->slug),'method'=>'delete')) }}
+                            {!! Form::submit("Delete", ["class"=>"btn btn-danger btn-block"]) !!}
+                            {{ Form::close() }}
                         </div>
                     </div>
                 </div>
