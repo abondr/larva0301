@@ -11,6 +11,13 @@
                     <a href="{{ route('post.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create</a>
             </div>
         </div>
+        <div class="row">
+            @if (session()->has('message'))
+                <div class="col-md-12 alert alert-info">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
         <div class='row'>
             <table class='table table-striped table-sm'>
                 <thead class='thead-dark'>

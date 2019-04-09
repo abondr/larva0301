@@ -102,6 +102,7 @@ class PostController extends Controller
         $post->created_at = date("Y-m-d H:i:s");
         $post->updated_at = date("Y-m-d H:i:s");
         $post->save();
+        Session::flash('message', 'Post updated successfully');
         return redirect()->route('post.index');
 
     }
@@ -115,5 +116,8 @@ class PostController extends Controller
     public function destroy($slug)
     {
         $post = Post::where("slug",$slug)->first();
+        $post->delete();
+        Session::flash('message', 'Post deleted successfully');
+        return redirect()->route('post.index');
     }
 }
